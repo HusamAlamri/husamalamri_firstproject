@@ -1,0 +1,106 @@
+
+
+import java.util.Scanner;
+    public class TestLibrary {
+        public static void main(String[] args) {
+            Scanner s=new Scanner(System.in);
+            int x;
+            Library l = new Library();
+           
+           
+        do{
+            System.out.println("**********************************************************************");
+            System.out.println("*                 Welcome to KSU Library :)");
+            System.out.println("*");
+            System.out.println("*                ---------------------------");
+            System.out.println("*         Please enter one of the following options:");
+            System.out.println("*         1) Add a book");
+            System.out.println("*         2) Delete a book");
+            System.out.println("*         3) Find a book");
+            System.out.println("*         4) List all books");
+            System.out.println("*         5) List books for a given genre");
+            System.out.println("*         6) Number of books for a given author");
+            System.out.println("*         7) Total number of books");
+            System.out.println("*         8) Exit");
+            System.out.println("*");
+            System.out.println("**********************************************************************");
+            System.out.print("Enter your option :> ");
+            x=s.nextInt();
+           
+            if (x==1){
+                System.out.print("Please, enter the book details #ISBN, author, title, and genre.");
+                if (l.addBook(s.nextInt(), s.next(), s.next(), s.next()) == true ){
+                    System.out.println("The book has been added.");
+                }
+            }
+           
+            if (x == 2){
+                System.out.println("Please, enter the book #ISBN: ");
+                l.deleteBook(s.nextInt());
+            }
+           
+            if (x == 3){
+                System.out.println("Please, enter the book #ISBN: ");
+                int q =s.nextInt();
+                int d = q;
+                if (l.findBook(q) == -1){
+                    System.out.println("The book is not found.");
+                }
+                else
+                    l.libraryBooks[l.findBook(d)].printBookInfo();
+                   
+            }
+               
+            if (x == 4){
+                l.printAll();
+            }
+           
+            if (x == 5){
+                System.out.println("Please, enter the genre: ");
+                l.printGenre(s.next());
+            }
+           
+            if (x == 6){
+                System.out.println("Please, enter the author's name: ");
+                System.out.println(l.getNumberOfBooksByAuthor(s.next()));
+            }
+           
+            if (x == 7){
+                System.out.println(l.getNumberOfBooks());
+            }
+               
+            if (x == 8){
+                System.out.println("Thanks. Goodbye!");
+            }
+               
+            }while (x<8);
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+               
+        }
+
+    }
