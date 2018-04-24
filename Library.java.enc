@@ -1,0 +1,122 @@
+
+    public class Library {
+
+        Book[] libraryBooks;    
+        int numOfBooks;
+        public static final int MAX_SIZE = 100;
+        Book e = new Book();
+        Library(){
+            int numOfBooks = 0;
+            libraryBooks = new Book[100];
+        }
+        
+        public boolean addBook(int ISBN, String author, String title, String genre){
+            
+            if (numOfBooks < MAX_SIZE){
+                
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ maybe logical error
+                
+                Book m = new Book(ISBN , author , title , genre);
+                  libraryBooks[numOfBooks]=m;
+                  if (findBook1(libraryBooks[numOfBooks]) == -1){
+                  if (libraryBooks[numOfBooks].verifyISBN(ISBN)==true)
+                    {
+                      
+                  numOfBooks++;
+                 
+                  return true;
+                    }
+                  else
+                      System.out.println("Invaild ISBN.");
+                }
+                  else
+                      System.out.println("The book is already added.");
+            }
+            else System.out.println("The library is full.");
+            
+            
+                return false;
+            }
+    
+            
+        
+        public void deleteBook(int ISBN){
+            
+            
+            libraryBooks[numOfBooks] = libraryBooks[findBook(ISBN)];
+            numOfBooks--;
+        }
+    
+    
+        public int findBook(int ISBN) {
+            for (int i = 0; i < numOfBooks; i++)
+                if (libraryBooks[i].getISBN() == ISBN)
+                    return i;
+            return -1;
+        }
+    
+
+        public int findBook1(Book z) {
+            for (int i=0; i<numOfBooks; i++)
+                if (libraryBooks[i].getISBN() == z.getISBN())
+                    return i;
+            return -1;
+        }
+    
+
+        public void printAll(){
+            
+            
+            if (numOfBooks > 0){
+            for (int i=0; i<numOfBooks; i++){
+                
+                libraryBooks[i].printBookInfo();
+                System.out.println("---------------------------");
+            }
+                }
+        }
+    
+        public void printGenre(String g){
+            
+            for (int i=0; i<numOfBooks; i++){
+                if(libraryBooks[i].getGenre().equalsIgnoreCase(g)){
+                    libraryBooks[i].printBookInfo();
+                    System.out.println("---------------------------");
+                }
+            }
+            
+        }
+        
+        public int getNumberOfBooksByAuthor(String A){
+            int x = 0;
+            for (int i=0; i<numOfBooks; i++){
+                if(libraryBooks[i].getAuthor().equalsIgnoreCase(A)){
+                    x++;
+                }
+            }
+            
+            return x;
+            
+        }
+    
+        public int getNumberOfBooks(){
+            
+            return numOfBooks;
+        }
+
+        public Book[] getLibraryBooks() {
+            return libraryBooks;
+        }
+
+        public void setNumOfBooks(int numOfBooks) {
+            this.numOfBooks = numOfBooks;
+        }
+    
+        
+        
+    
+    
+    
+    
+    
+}
